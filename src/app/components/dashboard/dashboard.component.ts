@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { UserForm } from '../../models/usuario.model';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -9,11 +11,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  public user: { nombre: string, role: string };
+  public user: UserForm[];
 
   constructor( private activatedRoute: ActivatedRoute ) {
-    this.activatedRoute.params.subscribe( (params: { nombre: string, role: string }) => {
-      console.log(params);
+    this.activatedRoute.params.subscribe( (params: UserForm[]) => {
       this.user = params;
     });
   }

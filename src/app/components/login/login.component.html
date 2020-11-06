@@ -5,7 +5,7 @@
             <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
             <input type="email" class="form-control mb-2" placeholder="Email address" formControlName="email">
             <input type="text" class="form-control" placeholder="Password" formControlName="pass">
-            <div class="row">
+            <div class="row mb-2">
                 <div class="col text-danger text-left">
                     <p *ngIf="validarCampo('email')" class="animate__bounceIn">*El email es necesario y debe ser válido</p>
                     <p *ngIf="validarCampo('pass')" class="animate__bounceIn">*El password es necesario</p>

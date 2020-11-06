@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     }
   ];
   public logged = false;
-  public userLogged: any;
+  public userLogged: UserForm;
 
   public loginForm = this.fb.group({
     email: ['',  [ Validators.required, Validators.email ] ],
@@ -54,7 +54,6 @@ export class LoginComponent implements OnInit {
     if ( this.loginForm.invalid ) {
       return;
     }
-
 
     this.data.forEach( user => {
       if ( user.email === this.loginForm.value.email && user.pass === this.loginForm.value.pass ) {

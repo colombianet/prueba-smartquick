@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+
+import { UserForm } from '../models/usuario.model';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -7,11 +11,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DataService {
 
-  public listado: any;
+  public listado: UserForm[];
 
   constructor( private http: HttpClient ) { }
 
-  getData() {
-    return this.http.get('https://raw.githubusercontent.com/ag-grid/ag-grid/master/grid-packages/ag-grid-docs/src/olympicWinners.json');
+  getData(): Observable<UserForm[]> {
+    return this.http.get('https://raw.githubusercontent.com/ag-grid/ag-grid/master/grid-packages/ag-grid-docs/src/olympicWinners.json')
+      .pipe(map( (resp: UserForm[]) => {
+        return this.listado = resp;
+      }));
   }
 }

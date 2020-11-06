@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+
 import { DataService } from '../../services/data.service';
+import { UserForm } from '../../models/usuario.model';
 
 @Component({
   selector: 'app-home',
@@ -14,21 +16,17 @@ export class HomeComponent implements OnInit {
 
   @Input() user: { nombre: string, role: string };
 
-  constructor( private data: DataService ) { }
+  constructor( private data: DataService ) {
+    this.loading = true;
+    setTimeout(() => {
+      this.loading = false;
+    }, 3000);
+   }
 
   ngOnInit(): void {
-    if ( this.data.listado !== undefined || this.data.listado !== null ) {
-      this.atleta = this.data.listado;
-    } else {
-      this.data.getData().subscribe( (resp: any) => {
-        this.loading = true;
-        setTimeout(() => {
-          this.loading = false;
-        }, 3000);
-        this.atleta = resp;
-        this.data.listado = resp;
-      });
-    }
+    this.data.getData().subscribe( (resp: any) => {
+      this.atleta = resp;
+    });
   }
 
 }
