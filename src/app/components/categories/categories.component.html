@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="container">
+        <h2>Total medallas por categoría</h2>
+        <hr>
+        <app-loading *ngIf="loading"></app-loading>
+        <table class="table table-hover" *ngIf="!loading">
+            <tbody>
+                <tr>
+                    <td class="pointer" (click)="mostrarModal('oro')">
+                        <img src="assets/img/oro.jpg" alt="medalla oro" class="img img-thumbnail" width="100" height="100"> {{ medallasOro }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="pointer" (click)="mostrarModal('plata')">
+                        <img src="assets/img/plata.jpg" alt="medalla plata" class="img img-thumbnail" width="100" height="100"> {{ medallasPlata }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="pointer" (click)="mostrarModal('bronce')">
+                        <img src="assets/img/bronce.jpg" alt="medalla bronce" class="img img-thumbnail" width="100" height="100"> {{ medallasBronce }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

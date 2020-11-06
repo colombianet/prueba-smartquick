@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand">
+        <img src="assets/img/logo1.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy"> SmartQuickApp
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" routerLinkActive="active" *ngIf="user.role == 'Coordinador'">
+                <a class="nav-link" routerLink="mantenimiento">Coordinación</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" *ngIf="user.role != 'Coordinador'">
+                <a class="nav-link" routerLink="home">Inicio</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" *ngIf="user.role != 'Coordinador'">
+                <a class="nav-link" routerLink="categories">Categorías</a>
+            </li>
+        </ul>
+        <span class="navbar-text">
+            {{ user.nombre }} - {{ user.role }}
+        </span>
+    </div>
+</nav>
+<div class="row">
+    <div class="col m-4 text-right">
+        <button type="button" class="btn btn-outline-danger" routerLink="/login">Salir</button>
+    </div>
+</div>
